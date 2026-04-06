@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.sametkarakus68.PackageManager</id>
+
+  <name>Package Manager</name>
+  <summary>Manage Flatpak and Snap packages with a modern PyQt6 interface</summary>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <description>
+    <p>
+      A modern desktop application for managing Flatpak and Snap packages.
+      Features include:
+    </p>
+    <ul>
+      <li>List installed Flatpak and Snap packages with details</li>
+      <li>Install and uninstall packages with a graphical interface</li>
+      <li>Manage desktop shortcuts and launchers</li>
+      <li>Detect duplicate packages (same app as Flatpak and Snap)</li>
+      <li>Export and import package lists as JSON</li>
+      <li>Dark and light theme support</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">io.github.sametkarakus68.PackageManager.desktop</launchable>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>Main window showing installed packages</caption>
+      <image type="source" width="1920" height="1080">https://raw.githubusercontent.com/sametkarakus68/pkg-manager/main/screenshots/main.png</image>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://github.com/sametkarakus68/pkg-manager</url>
+  <url type="bugtracker">https://github.com/sametkarakus68/pkg-manager/issues</url>
+  <url type="donation">https://github.com/sponsors/sametkarakus68</url>
+
+  <provides>
+    <binary>pkg-manager</binary>
+  </provides>
+
+  <releases>
+    <release version="1.0.0" date="2026-04-05">
+      <description>
+        <p>Initial release on Flathub</p>
+      </description>
+    </release>
+  </releases>
+
+  <content_rating type="oars-1.1" />
+
+  <developer id="io.github.sametkarakus68">
+    <name>samet</name>
+  </developer>
+
+  <update_contact>samet@example.com</update_contact>
+</component>
