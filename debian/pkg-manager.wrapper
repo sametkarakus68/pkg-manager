@@ -1,0 +1,4 @@
+#!/bin/bash
+# Wrapper script for pkg-manager
+# Sets PYTHONPATH so main.py can find core.py and ui.py
+exec python3 /usr/share/pkg-manager/main.py "$@"

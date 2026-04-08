@@ -1,10 +1,11 @@
 [Desktop Entry]
+Type=Application
 Name=Package Manager
+GenericName=Flatpak & Snap Package Manager
 Comment=Manage Flatpak and Snap packages with a modern PyQt6 interface
 Exec=pkg-manager
-Icon=io.github.sametkarakus68.PackageManager
+Icon=pkg-manager
 Terminal=false
-Type=Application
-Categories=Utility;System;Settings;
-Keywords=flatpak;snap;package;manager;install;uninstall;
+Categories=Utility;PackageManager;Qt;
+Keywords=flatpak;snap;package;manager;
 StartupWMClass=io.github.sametkarakus68.PackageManager

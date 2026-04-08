@@ -101,7 +101,16 @@ def main():
 
     app.setApplicationName("Package Manager")
     app.setDesktopFileName(APP_ID)
-    app.setWindowIcon(QIcon("/app/share/icons/hicolor/256x256/apps/" + APP_ID + ".png"))
+
+    # Icon path: try Flatpak path first, then .deb system path, then local dev path
+    icon_paths = [
+        f"/app/share/icons/hicolor/256x256/apps/{APP_ID}.png",  # Flatpak
+        "/usr/share/icons/hicolor/256x256/apps/pkg-manager.png",  # .deb
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "icon.png"),  # Dev
+    ]
+    icon_path = next((p for p in icon_paths if os.path.exists(p)), "")
+    if icon_path:
+        app.setWindowIcon(QIcon(icon_path))
 
     window = MainWindow()
     window.show()

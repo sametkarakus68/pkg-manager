@@ -1,0 +1,39 @@
+# Maintainer: samet <samet@localhost>
+pkgname=pkg-manager
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Flatpak & Snap Package Manager — Modern PyQt6 desktop application"
+arch=('any')
+url="https://github.com/sametkarakus68/PackageManager"
+license=('MIT')
+depends=('python' 'python-pyqt6' 'flatpak' 'snapd')
+optdepends=()
+makedepends=()
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sametkarakus68/PackageManager/archive/refs/tags/v${pkgver}.tar.gz"
+        "${pkgname}.desktop")
+sha256sums=('SKIP'
+            'SKIP')
+
+package() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+
+    # Install Python scripts
+    install -d "${pkgdir}/usr/share/${pkgname}"
+    install -m644 core.py "${pkgdir}/usr/share/${pkgname}/core.py"
+    install -m644 ui.py   "${pkgdir}/usr/share/${pkgname}/ui.py"
+    install -m644 main.py "${pkgdir}/usr/share/${pkgname}/main.py"
+
+    # Install wrapper script
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<'EOF'
+#!/bin/bash
+exec python3 /usr/share/pkg-manager/main.py "$@"
+EOF
+
+    # Install desktop entry
+    install -Dm644 "${srcdir}/${pkgname}.desktop" \
+        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+    # Install icon
+    install -Dm644 icon.png \
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+}

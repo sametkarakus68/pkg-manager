@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+%:
+	dh $@ --without python3
+
+override_dh_auto_install:
+	# Install Python scripts
+	install -d $(CURDIR)/debian/pkg-manager/usr/share/pkg-manager
+	install -m 644 core.py $(CURDIR)/debian/pkg-manager/usr/share/pkg-manager/core.py
+	install -m 644 ui.py $(CURDIR)/debian/pkg-manager/usr/share/pkg-manager/ui.py
+	install -m 644 main.py $(CURDIR)/debian/pkg-manager/usr/share/pkg-manager/main.py
+	# Install wrapper script as executable
+	install -Dm 755 debian/pkg-manager.wrapper $(CURDIR)/debian/pkg-manager/usr/bin/pkg-manager
+	# Install desktop entry
+	install -Dm 644 pkg-manager.desktop $(CURDIR)/debian/pkg-manager/usr/share/applications/pkg-manager.desktop
+	# Install icon
+	install -Dm 644 icon.png $(CURDIR)/debian/pkg-manager/usr/share/icons/hicolor/256x256/apps/pkg-manager.png
+
+override_dh_auto_build:
+	# No build step needed for Python app
+
+override_dh_auto_clean:
+	rm -rf __pycache__
+
+override_dh_installchangelogs:
+	# No upstream changelog
